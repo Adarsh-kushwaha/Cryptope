@@ -1,5 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
+import { ShortenAdd } from '../utils/ShortenAdd';
+
 
 const Input = ({ placeholder, type, name, value, handleChange }) => {
     return <input type={type} value={value} placeholder={placeholder} step="0.001" onChange={(e) => handleChange(e, name)} className="py-3 px-4 mx-2 w-full bg-gray-200 outline-none text-gray-800 font-semibold rounded-sm" />
@@ -30,6 +32,7 @@ const Welcome = () => {
                 Connect To Wallet
             </button>}
             {currentAccount && <p className='text-center text-green-600 my-6 text-2xl font-bold'> ✅ You are connected to your wallet</p>}
+            {currentAccount && <p className='text-center text-gray-600 my-6 text-lg font-semibold'>Address : {ShortenAdd(currentAccount)}</p>}
 
             <div className='w-full p-4 mt-8 grid grid-rows grid-cols-1 gap-4 '>
                 <h2 className='text-xl font-bold'>Transaction Form</h2>

@@ -84,7 +84,7 @@ export const TransactionProvider = ({ children }) => {
 
             const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, keyword, message);
             setIsLoading(true);
-            console.log(`loading... ${transactionHash.hash}`);
+            console.log(`loading - ${transactionHash.hash}`);
             await transactionHash.wait();
             setIsLoading(false);
             console.log(`success ${transactionHash.hash}`);
