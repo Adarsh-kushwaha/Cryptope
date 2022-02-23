@@ -1,6 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, {useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
 import { ShortenAdd } from '../utils/ShortenAdd';
+import Loader from './Loader';
 
 
 const Input = ({ placeholder, type, name, value, handleChange }) => {
@@ -9,9 +10,8 @@ const Input = ({ placeholder, type, name, value, handleChange }) => {
 
 const Welcome = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
 
-    const { connectWallet, currentAccount, formData, handleChange, sendTransaction } = useContext(TransactionContext)
+    const { connectWallet, currentAccount, formData, handleChange, sendTransaction, isLoading } = useContext(TransactionContext)
 
     const handleSubmit = (e) => {
         const { addressTo, amount, keyword, message } = formData;
@@ -39,14 +39,14 @@ const Welcome = () => {
                 <form className='grid grid-rows grid-cols-1 gap-4'>
                     <Input placeholder="Address To" type="text" handleChange={handleChange} name="addressTo" />
                     <Input placeholder="Ether (Amt)" type="number" handleChange={handleChange} name="amount" />
-                    <Input placeholder="Keyword (gif)" type="text" handleChange={handleChange} name="keyword" />
+                    <Input placeholder="Quote" type="text" handleChange={handleChange} name="keyword" />
                     <Input placeholder="Message" type="text" handleChange={handleChange} name="message" />
 
-                    {isLoading === false ? <button
+                    {isLoading ? <Loader /> : <button
                         type="button"
                         className='w-full bg-blue-400 text-gray-100 py-2 px-4 text-xl rounded-md cursor-pointer hover:bg-blue-500 text-center rounded-md mx-2'
                         onClick={handleSubmit}
-                    >Send Now</button> : <p>Loading..</p>}
+                    >Send Now</button>}
 
                 </form>
             </div>
