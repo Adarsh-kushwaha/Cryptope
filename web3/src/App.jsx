@@ -8,11 +8,14 @@ const App = () => {
 
   return (
     <>
-    <div className='max-w-xl m-auto'>
-      <Navbar />
-      <Welcome/>
+      <div className='md:max-w-xl md:m-auto max-w-[95%] m-auto'>
+        <Navbar />
+        <Welcome />
         <Transaction />
-    </div>
+      </div>
+      <div className='text-center p-6 my-8 border-gray-700 text-gray-600 font-bold container'>
+        <p className='underline text-lg'>Made By Adarsh Kushwaha</p>
+      </div>
     </>
   );
 };

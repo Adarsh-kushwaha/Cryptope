@@ -50,6 +50,7 @@ const Welcome = () => {
 
                 </form>
             </div>
+            
         </div>
     )
 }
